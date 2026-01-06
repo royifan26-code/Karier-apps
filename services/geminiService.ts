@@ -2,9 +2,12 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Job } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+const getAiClient = () => {
+  return new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+};
 
 export const generateJobs = async (level: number): Promise<Job[]> => {
+  const ai = getAiClient();
   const prompt = `Generate 5 realistic freelance job listings for a digital marketplace. 
   Difficulty should be appropriate for experience level ${level}.
   Include a variety of categories like Programming, Design, Writing, and Data Analysis.
@@ -44,6 +47,7 @@ export const generateJobs = async (level: number): Promise<Job[]> => {
 };
 
 export const evaluateJobTask = async (job: Job, submission: string): Promise<{ success: boolean; feedback: string }> => {
+  const ai = getAiClient();
   const prompt = `Evaluate the following submission for the job: "${job.title}".
   Job Description: ${job.description}
   Submission: ${submission}
