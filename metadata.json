@@ -1,0 +1,7 @@
+{
+  "name": "KarirKita - AI Career Simulator",
+  "description": "A sophisticated career simulation game where users can act as freelancers or employers. Manage your virtual wallet, deposit funds via GoPay/OVO, and build your digital empire using AI-generated opportunities.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
